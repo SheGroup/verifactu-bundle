@@ -1,0 +1,26 @@
+services:
+
+  SheGroup\VerifactuBundle\:
+    resource: '../../../'
+    exclude: '../../../{Admin,DependencyInjection,Entity,Event,Exception,Model,Resources,Tests,*Bundle.php}'
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  SheGroup\VerifactuBundle\Model\Certificate:
+    - '%she_group_verifactu.certificate.enabled%'
+    - '%she_group_verifactu.certificate.expiration_warning%'
+    - '%she_group_verifactu.certificate.path%'
+    - '%she_group_verifactu.certificate.password%'
+
+  SheGroup\VerifactuBundle\Model\ComputerSystem:
+    - '%she_group_verifactu.computer_system.production%'
+    - '%she_group_verifactu.computer_system.id%'
+    - '%she_group_verifactu.computer_system.name%'
+    - '%she_group_verifactu.computer_system.vendor_id%'
+    - '%she_group_verifactu.computer_system.vendor_name%'
+    - '%she_group_verifactu.computer_system.version%'
+    - '%she_group_verifactu.computer_system.installation_number%'
+    - '%she_group_verifactu.computer_system.only_supports_verifactu%'
+    - '%she_group_verifactu.computer_system.supports_multiple_taxpayers%'
+    - '%she_group_verifactu.computer_system.has_multiple_taxpayers%'

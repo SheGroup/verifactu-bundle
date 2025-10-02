@@ -1,0 +1,33 @@
+{
+  "name": "shegroup/verifactu-bundle",
+  "type": "symfony-bundle",
+  "description": "Verifactu Bundle ",
+  "keywords": [
+    "verifactu",
+    "bundle"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Francisco J. Cruz Romanos",
+      "email": "fran@damecode.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SheGroup\\VerifactuBundle\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "ext-curl": "*",
+    "ext-dom": "*",
+    "ext-openssl" : "*",
+    "symfony/symfony": "^3.4",
+    "doctrine/doctrine-bundle": "^1.6",
+    "doctrine/orm": "^2.5",
+    "twig/twig": "^1.0|^2.0",
+    "guzzlehttp/guzzle": "^6.1|^7.0",
+    "chillerlan/php-qrcode": "^5.0"
+  }
+}
