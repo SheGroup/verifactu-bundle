@@ -8,6 +8,7 @@ use SheGroup\VerifactuBundle\Entity\Invoice;
 use SheGroup\VerifactuBundle\Entity\InvoiceLine;
 use SheGroup\VerifactuBundle\Entity\InvoiceRecipient;
 use SheGroup\VerifactuBundle\Enum\InvoiceType;
+use SheGroup\VerifactuBundle\Enum\OperationType;
 use SheGroup\VerifactuBundle\Model\ComputerSystem;
 use SheGroup\VerifactuBundle\Serializer\Normalizer\InvoiceXmlNormalizer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
@@ -209,13 +210,21 @@ final class AEATInvoiceXmlGenerator implements InvoiceXmlGenerator
 
     private function normalizeLine(InvoiceLine $line): array
     {
+        if (OperationType::isExempt($line->getOperationType())) {
+            return [
+                'sum1:Impuesto' => $line->getTaxType(),
+                'sum1:ClaveRegimen' => $line->getRegimeType(),
+                'sum1:CalificacionOperacion' => $line->getOperationType(),
+                'sum1:BaseImponibleOimporteNoSujeto' => $this->numberFormatter->format($line->getBaseAmount()),
+            ];
+        }
         /* @noinspection SpellCheckingInspection */
         return [
             'sum1:Impuesto' => $line->getTaxType(),
             'sum1:ClaveRegimen' => $line->getRegimeType(),
             'sum1:CalificacionOperacion' => $line->getOperationType(),
-            'sum1:TipoImpositivo' => $this->numberFormatter->format($line->getTaxRate()),
             'sum1:BaseImponibleOimporteNoSujeto' => $this->numberFormatter->format($line->getBaseAmount()),
+            'sum1:TipoImpositivo' => $this->numberFormatter->format($line->getTaxRate()),
             'sum1:CuotaRepercutida' => $this->numberFormatter->format($line->getTaxAmount()),
         ];
     }

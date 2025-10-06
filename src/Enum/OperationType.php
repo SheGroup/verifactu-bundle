@@ -20,4 +20,9 @@ final class OperationType
             self::N2,
         ];
     }
+
+    public static function isExempt(string $type): bool
+    {
+        return in_array($type, [self::N1, self::N2], true);
+    }
 }
