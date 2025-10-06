@@ -14,7 +14,7 @@ final class CannotStoreInvoiceException extends RuntimeException
 
     public function __construct(Invoice $invoice, Throwable $previous = null)
     {
-        parent::__construct('', 0, $previous);
+        parent::__construct(sprintf('Cannot store invoice %s', $invoice->getNumber()), 0, $previous);
         $this->invoice = $invoice;
     }
 

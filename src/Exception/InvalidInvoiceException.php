@@ -18,6 +18,7 @@ final class InvalidInvoiceException extends InvalidEntityException
         Throwable $previous = null
     ) {
         parent::__construct($errors, $previous);
+        $this->message = sprintf('Invalid invoice %s', $invoice->getNumber());
         $this->invoice = $invoice;
     }
 

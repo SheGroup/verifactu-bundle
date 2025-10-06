@@ -18,6 +18,7 @@ final class InvalidInvoiceLineException extends InvalidEntityException
         Throwable $previous = null
     ) {
         parent::__construct($errors, $previous);
+        $this->message = 'Invalid invoice line';
         $this->invoiceLine = $invoiceLine;
     }
 

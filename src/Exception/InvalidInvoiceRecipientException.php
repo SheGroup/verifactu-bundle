@@ -18,6 +18,11 @@ final class InvalidInvoiceRecipientException extends InvalidEntityException
         Throwable $previous = null
     ) {
         parent::__construct($errors, $previous);
+        $this->message = sprintf(
+            'Invalid invoice recipient: %s (%s)',
+            $recipient->getName(),
+            $recipient->getRecipientId()
+        );
         $this->invoiceRecipient = $recipient;
     }
 

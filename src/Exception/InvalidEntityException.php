@@ -18,7 +18,7 @@ class InvalidEntityException extends RuntimeException
         ?ConstraintViolationListInterface $errors = null,
         Throwable $previous = null
     ) {
-        parent::__construct('', 0, $previous);
+        parent::__construct('Invalid entity', 0, $previous);
         $this->errors = $errors;
     }
 

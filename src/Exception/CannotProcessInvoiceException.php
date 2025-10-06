@@ -16,7 +16,11 @@ final class CannotProcessInvoiceException extends RuntimeException
 
     public function __construct(Invoice $invoice, Response $response, Throwable $previous = null)
     {
-        parent::__construct('', 0, $previous);
+        parent::__construct(
+            sprintf('Cannot process invoice %s: %s', $invoice->getNumber(), $response->getErrorMessage()),
+            $response->getErrorCode() ?? 0,
+            $previous
+        );
         $this->invoice = $invoice;
         $this->response = $response;
     }
