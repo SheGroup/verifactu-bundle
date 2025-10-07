@@ -223,8 +223,8 @@ final class AEATInvoiceXmlGenerator implements InvoiceXmlGenerator
             'sum1:Impuesto' => $line->getTaxType(),
             'sum1:ClaveRegimen' => $line->getRegimeType(),
             'sum1:CalificacionOperacion' => $line->getOperationType(),
-            'sum1:BaseImponibleOimporteNoSujeto' => $this->numberFormatter->format($line->getBaseAmount()),
             'sum1:TipoImpositivo' => $this->numberFormatter->format($line->getTaxRate()),
+            'sum1:BaseImponibleOimporteNoSujeto' => $this->numberFormatter->format($line->getBaseAmount()),
             'sum1:CuotaRepercutida' => $this->numberFormatter->format($line->getTaxAmount()),
         ];
     }
