@@ -197,7 +197,7 @@ class Invoice
      *         @ORM\JoinColumn(name="invoice_id", referencedColumnName="id", onDelete="CASCADE")
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="corrective_id", referencedColumnName="id", unique=true, onDelete="CASCADE"),
+     *         @ORM\JoinColumn(name="corrective_id", referencedColumnName="id", onDelete="CASCADE"),
      *     },
      * )
      * @ORM\OrderBy({"createdAt": "ASC"})
